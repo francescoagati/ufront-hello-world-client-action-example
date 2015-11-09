@@ -4,6 +4,12 @@ import ufront.MVC;
 This is an example of how to initiate and execute a Ufront app.
 The process differs slightly between client and server.
 **/
+
+
+import Act;
+
+using ufront.web.result.AddClientActionResult;
+
 class HelloWorld {
 	static function main() {
 		#if server
@@ -36,7 +42,10 @@ class HelloWorldController extends Controller {
 	@:route("/$name")
 	public function hello( ?name:String="World" ) {
 		ufTrace( 'Hey $name, did you know we can trace directly to the browser console?' );
-		return new ViewResult({ title:'Hello $name' });
+		return new ViewResult({ title:'Hello $name' })
+			.addClientAction(Act,{msg:'hello world'})
+			.addClientAction(Act,{msg:'hello world 2'})
+			;
 	}
 
 	@:route(GET,"/signup/newname/")

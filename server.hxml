@@ -2,19 +2,19 @@
 -main HelloWorld
 
 # Compile the example for both PHP and neko.
+#--each
 
---each
 
--neko www/index.n
+#-neko www/index.n
 
---next
+#--next
 
 -php www/
 --php-lib php
 
---next
+#--next
 
--lib hxnodejs
--lib express
---macro allowPackage("sys")
--js www/server.js
+#-lib express
+#-lib hxnodejs
+#--macro allowPackage("sys")
+#-js www/server.js
